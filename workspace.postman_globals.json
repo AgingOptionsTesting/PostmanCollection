@@ -1,0 +1,15 @@
+{
+	"id": "dee8e67b-ce7e-447b-86f9-8e73e609cdbb",
+	"values": [
+		{
+			"key": "IntakeBaseUrl",
+			"value": "https://aointakeuatapi.azurewebsites.net",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2025-02-22T09:59:40.095Z",
+	"_postman_exported_using": "Postman/11.33.4"
+}
