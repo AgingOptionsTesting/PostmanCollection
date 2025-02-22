@@ -401,6 +401,48 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "getCountryDetails",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IntakeBaseUrl}}/api/Address/get-CountryDetails?countryName=India",
+					"host": [
+						"{{IntakeBaseUrl}}"
+					],
+					"path": [
+						"api",
+						"Address",
+						"get-CountryDetails"
+					],
+					"query": [
+						{
+							"key": "countryName",
+							"value": "India"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
