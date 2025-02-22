@@ -7,48 +7,75 @@
 	},
 	"item": [
 		{
-			"name": "TestFolder",
-			"item": [
+			"name": "getBearerToken",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseJson = pm.response.json();\r",
+							"let jwt = pm.response.json().data.jwtToken; // JSONPath to get jwtToken\r",
+							"\r",
+							"\r",
+							"\r",
+							"//if (responseJson && responseJson.data && responseJson.data.jwtToken) {\r",
+							"   // pm.collectionVariables.set(\"jwtToken\", responseJson.data.jwtToken);\r",
+							"   // console.log(\"JWT Token stored in collection variable:\", responseJson.data.jwtToken);\r",
+							"//} else {\r",
+							"  //  console.log(\"JWT Token not found in response!\");\r",
+							"//}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"Password@123\",\r\n  \"userName\": \"testuat055@maildrop.cc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://aointakeuatapi.azurewebsites.net/api/Authentication/authenticate",
+					"protocol": "https",
+					"host": [
+						"aointakeuatapi",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Authentication",
+						"authenticate"
+					]
+				}
+			},
+			"response": [
 				{
 					"name": "getBearerToken",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"let responseJson = pm.response.json();\r",
-									"let jwt = pm.response.json().data.jwtToken; // JSONPath to get jwtToken\r",
-									"\r",
-									"\r",
-									"\r",
-									"//if (responseJson && responseJson.data && responseJson.data.jwtToken) {\r",
-									"   // pm.collectionVariables.set(\"jwtToken\", responseJson.data.jwtToken);\r",
-									"   // console.log(\"JWT Token stored in collection variable:\", responseJson.data.jwtToken);\r",
-									"//} else {\r",
-									"  //  console.log(\"JWT Token not found in response!\");\r",
-									"//}\r",
-									""
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
+					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -75,128 +102,96 @@
 							]
 						}
 					},
-					"response": [
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"name": "getBearerToken",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"password\": \"Password@123\",\r\n  \"userName\": \"testuat055@maildrop.cc\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "https://aointakeuatapi.azurewebsites.net/api/Authentication/authenticate",
-									"protocol": "https",
-									"host": [
-										"aointakeuatapi",
-										"azurewebsites",
-										"net"
-									],
-									"path": [
-										"api",
-										"Authentication",
-										"authenticate"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 18 Feb 2025 16:51:11 GMT"
-								},
-								{
-									"key": "Server",
-									"value": "Microsoft-IIS/10.0"
-								},
-								{
-									"key": "Content-Encoding",
-									"value": "gzip"
-								},
-								{
-									"key": "Set-Cookie",
-									"value": "refreshToken=BW37TR59JPJPO1TOY3E08ETIKRAFSAYFMQF118e48e0-c92c-423c-b9ef-f7c8a096808c; expires=Tue, 18 Feb 2025 18:51:11 GMT; path=/; httponly"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding"
-								},
-								{
-									"key": "api-supported-versions",
-									"value": "1.0"
-								},
-								{
-									"key": "X-Powered-By",
-									"value": "ASP.NET"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"jwtToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzIwNCIsInVzZXJOYW1lIjoidGVzdHVhdDA1NUBtYWlsZHJvcC5jYyIsIm1lbWJlclVzZXJJZCI6IjBjZWFiZWEyLWU5MDQtNGQ2ZS04MDgxLWQ3NTY3MDZhNGI1YSIsIm5iZiI6MTczOTg5NzQ3MCwiZXhwIjoxNzM5OTA0NjcwLCJpYXQiOjE3Mzk4OTc0NzB9.NZ9A_3zE_fx6PQoQuvyEv10gjrJlDVStGY53f8E80ZA\",\n        \"refreshToken\": \"BW37TR59JPJPO1TOY3E08ETIKRAFSAYFMQF118e48e0-c92c-423c-b9ef-f7c8a096808c\",\n        \"refreshTokenExpiryTime\": \"2025-02-18T18:51:10.9803721Z\",\n        \"refreshTokenId\": 0,\n        \"id\": 77204,\n        \"subtenant_Id\": 2,\n        \"userName\": \"testuat055@maildrop.cc\",\n        \"roleId\": 0,\n        \"memberUserId\": \"0ceabea2-e904-4d6e-8081-d756706a4b5a\",\n        \"spouseUserId\": \"ecaef092-cf4d-48bf-b6da-fa41f5234b50\",\n        \"memberName\": \"Roshani Kumari Sharma\",\n        \"primaryEmailId\": \"testuat055@maildrop.cc\",\n        \"primaryPhoneNumber\": null,\n        \"isActive\": true,\n        \"isDeleted\": false,\n        \"isFirstLogin\": false,\n        \"auth0Id\": \"67aecb368997d12414d78d79\",\n        \"signUpPlatform\": 6,\n        \"loginUserEmailId\": null,\n        \"loginUserName\": null,\n        \"spouseName\": \"Nitesh Kumar Sharma\",\n        \"signatureId\": null,\n        \"userRoles\": [],\n        \"fileId\": null,\n        \"userPrice\": null\n    },\n    \"errorFlag\": null,\n    \"messages\": [],\n    \"succeeded\": true,\n    \"primaryUserId\": \"00000000-0000-0000-0000-000000000000\",\n    \"statusCode\": 0\n}"
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Feb 2025 16:51:11 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "refreshToken=BW37TR59JPJPO1TOY3E08ETIKRAFSAYFMQF118e48e0-c92c-423c-b9ef-f7c8a096808c; expires=Tue, 18 Feb 2025 18:51:11 GMT; path=/; httponly"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "api-supported-versions",
+							"value": "1.0"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"jwtToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzIwNCIsInVzZXJOYW1lIjoidGVzdHVhdDA1NUBtYWlsZHJvcC5jYyIsIm1lbWJlclVzZXJJZCI6IjBjZWFiZWEyLWU5MDQtNGQ2ZS04MDgxLWQ3NTY3MDZhNGI1YSIsIm5iZiI6MTczOTg5NzQ3MCwiZXhwIjoxNzM5OTA0NjcwLCJpYXQiOjE3Mzk4OTc0NzB9.NZ9A_3zE_fx6PQoQuvyEv10gjrJlDVStGY53f8E80ZA\",\n        \"refreshToken\": \"BW37TR59JPJPO1TOY3E08ETIKRAFSAYFMQF118e48e0-c92c-423c-b9ef-f7c8a096808c\",\n        \"refreshTokenExpiryTime\": \"2025-02-18T18:51:10.9803721Z\",\n        \"refreshTokenId\": 0,\n        \"id\": 77204,\n        \"subtenant_Id\": 2,\n        \"userName\": \"testuat055@maildrop.cc\",\n        \"roleId\": 0,\n        \"memberUserId\": \"0ceabea2-e904-4d6e-8081-d756706a4b5a\",\n        \"spouseUserId\": \"ecaef092-cf4d-48bf-b6da-fa41f5234b50\",\n        \"memberName\": \"Roshani Kumari Sharma\",\n        \"primaryEmailId\": \"testuat055@maildrop.cc\",\n        \"primaryPhoneNumber\": null,\n        \"isActive\": true,\n        \"isDeleted\": false,\n        \"isFirstLogin\": false,\n        \"auth0Id\": \"67aecb368997d12414d78d79\",\n        \"signUpPlatform\": 6,\n        \"loginUserEmailId\": null,\n        \"loginUserName\": null,\n        \"spouseName\": \"Nitesh Kumar Sharma\",\n        \"signatureId\": null,\n        \"userRoles\": [],\n        \"fileId\": null,\n        \"userPrice\": null\n    },\n    \"errorFlag\": null,\n    \"messages\": [],\n    \"succeeded\": true,\n    \"primaryUserId\": \"00000000-0000-0000-0000-000000000000\",\n    \"statusCode\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "getAddressType",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Cookies\", function(){\r",
+							"    pm.expect(pm.cookies.has(\"ARRAffinity\")).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
 						}
 					]
 				},
-				{
-					"name": "getAddressType",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200 OK\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"pm.test(\"Verify Cookies\", function(){\r",
-									"    pm.expect(pm.cookies.has(\"ARRAffinity\")).to.be.true;\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IntakeBaseUrl}}/api/AddressType",
+					"host": [
+						"{{IntakeBaseUrl}}"
 					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{BearerToken}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{IntakeBaseUrl}}/api/AddressType",
-							"host": [
-								"{{IntakeBaseUrl}}"
-							],
-							"path": [
-								"api",
-								"AddressType"
-							]
-						}
-					},
-					"response": []
+					"path": [
+						"api",
+						"AddressType"
+					]
 				}
-			]
+			},
+			"response": []
 		},
 		{
 			"name": "getLoginUserDetails",
@@ -359,6 +354,34 @@
 							"key": "userId",
 							"value": "0ceabea2-e904-4d6e-8081-d756706a4b5a"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActivityType",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BearerToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IntakeBaseUrl}}/api/ActivityType",
+					"host": [
+						"{{IntakeBaseUrl}}"
+					],
+					"path": [
+						"api",
+						"ActivityType"
 					]
 				}
 			},
