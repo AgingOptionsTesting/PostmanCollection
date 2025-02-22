@@ -1,0 +1,397 @@
+{
+	"info": {
+		"_postman_id": "93cb9475-de31-4eb0-bec8-0dcc38eb15e5",
+		"name": "TestIntakeApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36931856"
+	},
+	"item": [
+		{
+			"name": "TestFolder",
+			"item": [
+				{
+					"name": "getBearerToken",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let responseJson = pm.response.json();\r",
+									"let jwt = pm.response.json().data.jwtToken; // JSONPath to get jwtToken\r",
+									"\r",
+									"\r",
+									"\r",
+									"//if (responseJson && responseJson.data && responseJson.data.jwtToken) {\r",
+									"   // pm.collectionVariables.set(\"jwtToken\", responseJson.data.jwtToken);\r",
+									"   // console.log(\"JWT Token stored in collection variable:\", responseJson.data.jwtToken);\r",
+									"//} else {\r",
+									"  //  console.log(\"JWT Token not found in response!\");\r",
+									"//}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"Password@123\",\r\n  \"userName\": \"testuat055@maildrop.cc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://aointakeuatapi.azurewebsites.net/api/Authentication/authenticate",
+							"protocol": "https",
+							"host": [
+								"aointakeuatapi",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"Authentication",
+								"authenticate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "getBearerToken",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"Password@123\",\r\n  \"userName\": \"testuat055@maildrop.cc\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://aointakeuatapi.azurewebsites.net/api/Authentication/authenticate",
+									"protocol": "https",
+									"host": [
+										"aointakeuatapi",
+										"azurewebsites",
+										"net"
+									],
+									"path": [
+										"api",
+										"Authentication",
+										"authenticate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 18 Feb 2025 16:51:11 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Microsoft-IIS/10.0"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refreshToken=BW37TR59JPJPO1TOY3E08ETIKRAFSAYFMQF118e48e0-c92c-423c-b9ef-f7c8a096808c; expires=Tue, 18 Feb 2025 18:51:11 GMT; path=/; httponly"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "api-supported-versions",
+									"value": "1.0"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "ASP.NET"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"jwtToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3NzIwNCIsInVzZXJOYW1lIjoidGVzdHVhdDA1NUBtYWlsZHJvcC5jYyIsIm1lbWJlclVzZXJJZCI6IjBjZWFiZWEyLWU5MDQtNGQ2ZS04MDgxLWQ3NTY3MDZhNGI1YSIsIm5iZiI6MTczOTg5NzQ3MCwiZXhwIjoxNzM5OTA0NjcwLCJpYXQiOjE3Mzk4OTc0NzB9.NZ9A_3zE_fx6PQoQuvyEv10gjrJlDVStGY53f8E80ZA\",\n        \"refreshToken\": \"BW37TR59JPJPO1TOY3E08ETIKRAFSAYFMQF118e48e0-c92c-423c-b9ef-f7c8a096808c\",\n        \"refreshTokenExpiryTime\": \"2025-02-18T18:51:10.9803721Z\",\n        \"refreshTokenId\": 0,\n        \"id\": 77204,\n        \"subtenant_Id\": 2,\n        \"userName\": \"testuat055@maildrop.cc\",\n        \"roleId\": 0,\n        \"memberUserId\": \"0ceabea2-e904-4d6e-8081-d756706a4b5a\",\n        \"spouseUserId\": \"ecaef092-cf4d-48bf-b6da-fa41f5234b50\",\n        \"memberName\": \"Roshani Kumari Sharma\",\n        \"primaryEmailId\": \"testuat055@maildrop.cc\",\n        \"primaryPhoneNumber\": null,\n        \"isActive\": true,\n        \"isDeleted\": false,\n        \"isFirstLogin\": false,\n        \"auth0Id\": \"67aecb368997d12414d78d79\",\n        \"signUpPlatform\": 6,\n        \"loginUserEmailId\": null,\n        \"loginUserName\": null,\n        \"spouseName\": \"Nitesh Kumar Sharma\",\n        \"signatureId\": null,\n        \"userRoles\": [],\n        \"fileId\": null,\n        \"userPrice\": null\n    },\n    \"errorFlag\": null,\n    \"messages\": [],\n    \"succeeded\": true,\n    \"primaryUserId\": \"00000000-0000-0000-0000-000000000000\",\n    \"statusCode\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "getAddressType",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Verify Cookies\", function(){\r",
+									"    pm.expect(pm.cookies.has(\"ARRAffinity\")).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldGWmhBUDdjdVJacUowdEZyX3c1MyJ9.eyJuaWNrbmFtZSI6ImluZHJhamVldHVhdCIsIm5hbWUiOiJpbmRyYWplZXR1YXRAbWFpbGRyb3AuY2MiLCJwaWN0dXJlIjoiaHR0cHM6Ly9zLmdyYXZhdGFyLmNvbS9hdmF0YXIvZjcxZTNmMDY3YzgzZDU3YWY5M2FlYjY2YTA4MDJjZTU_cz00ODAmcj1wZyZkPWh0dHBzJTNBJTJGJTJGY2RuLmF1dGgwLmNvbSUyRmF2YXRhcnMlMkZpbi5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMi0yMlQwOToyMzozOS42OTNaIiwiZW1haWwiOiJpbmRyYWplZXR1YXRAbWFpbGRyb3AuY2MiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYmV0YWxvZ2luLmFnaW5nb3B0aW9ucy5jb20vIiwiYXVkIjoidGtZMkh5Mk5JampuY1BCTjRiNEtZbUVRNVA2Q3BNSnUiLCJzdWIiOiJhdXRoMHw2NzU5MjA3MjRiMTY5ZmUyN2I5MDBiYWEiLCJpYXQiOjE3NDAyMTYyMzcsImV4cCI6MTc0MDIzMDYzNywic2lkIjoiVkVKbWItQXFGeldLSEtWR2U3M1VrRlE2RmlVdHhYN2UiLCJhdF9oYXNoIjoiR3MzcXZiSWpJaVFPWVBBNUJZOTVudyIsIm5vbmNlIjoicFhDNk9JOWJ4LnpycmVPQWNoZkNmWGEuQWxCdTd0Q0MifQ.LASumabFz9AAnMOjJX-2SXnEHHirG_uXuEtUL2k4mjk5R5-rIOcGwB9xzvnTAzbz47wGn26PQ9ZB3Beri9tzXVW7dC_sWkv2RFRTD6isvvXjroVl7LGRKotKdtf-tDqzWpX1yiwhKn6lm1e8cxFJZfFv0pqa-he6FOa4PZIfN3lYA1EmG8U9mJgt2cGn4hSVtzYXkU83lWUyKx2IfQrgPmj4ryAOSGksgi27L-cLtfiW85brd5qG6r9FJi0wY5UKUg6osZ6Y865FLnV-31Zv_vf6u1A5aHBiKct11YwTkV_u9W8oqfWuWI0UwncV1DDiQZn-j6Py1qnflb_6A9TPYw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{IntakeBaseUrl}}/api/AddressType",
+							"host": [
+								"{{IntakeBaseUrl}}"
+							],
+							"path": [
+								"api",
+								"AddressType"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "getLoginUserDetails",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Cookies\", function(){\r",
+							"    pm.expect(pm.cookies.has(\"ARRAffinity\")).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldGWmhBUDdjdVJacUowdEZyX3c1MyJ9.eyJuaWNrbmFtZSI6ImluZHJhamVldHVhdCIsIm5hbWUiOiJpbmRyYWplZXR1YXRAbWFpbGRyb3AuY2MiLCJwaWN0dXJlIjoiaHR0cHM6Ly9zLmdyYXZhdGFyLmNvbS9hdmF0YXIvZjcxZTNmMDY3YzgzZDU3YWY5M2FlYjY2YTA4MDJjZTU_cz00ODAmcj1wZyZkPWh0dHBzJTNBJTJGJTJGY2RuLmF1dGgwLmNvbSUyRmF2YXRhcnMlMkZpbi5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMi0yMlQwOToyMzozOS42OTNaIiwiZW1haWwiOiJpbmRyYWplZXR1YXRAbWFpbGRyb3AuY2MiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYmV0YWxvZ2luLmFnaW5nb3B0aW9ucy5jb20vIiwiYXVkIjoidGtZMkh5Mk5JampuY1BCTjRiNEtZbUVRNVA2Q3BNSnUiLCJzdWIiOiJhdXRoMHw2NzU5MjA3MjRiMTY5ZmUyN2I5MDBiYWEiLCJpYXQiOjE3NDAyMTYyMzcsImV4cCI6MTc0MDIzMDYzNywic2lkIjoiVkVKbWItQXFGeldLSEtWR2U3M1VrRlE2RmlVdHhYN2UiLCJhdF9oYXNoIjoiR3MzcXZiSWpJaVFPWVBBNUJZOTVudyIsIm5vbmNlIjoicFhDNk9JOWJ4LnpycmVPQWNoZkNmWGEuQWxCdTd0Q0MifQ.LASumabFz9AAnMOjJX-2SXnEHHirG_uXuEtUL2k4mjk5R5-rIOcGwB9xzvnTAzbz47wGn26PQ9ZB3Beri9tzXVW7dC_sWkv2RFRTD6isvvXjroVl7LGRKotKdtf-tDqzWpX1yiwhKn6lm1e8cxFJZfFv0pqa-he6FOa4PZIfN3lYA1EmG8U9mJgt2cGn4hSVtzYXkU83lWUyKx2IfQrgPmj4ryAOSGksgi27L-cLtfiW85brd5qG6r9FJi0wY5UKUg6osZ6Y865FLnV-31Zv_vf6u1A5aHBiKct11YwTkV_u9W8oqfWuWI0UwncV1DDiQZn-j6Py1qnflb_6A9TPYw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IntakeBaseUrl}}/api/Account/GetLoginUserDetails?emailId=testuat055@maildrop.cc&UserId=0ceabea2-e904-4d6e-8081-d756706a4b5a",
+					"host": [
+						"{{IntakeBaseUrl}}"
+					],
+					"path": [
+						"api",
+						"Account",
+						"GetLoginUserDetails"
+					],
+					"query": [
+						{
+							"key": "emailId",
+							"value": "testuat055@maildrop.cc"
+						},
+						{
+							"key": "UserId",
+							"value": "0ceabea2-e904-4d6e-8081-d756706a4b5a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUserDetailByEmailId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Status code is 200 OK\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Cookies\", function(){\r",
+							"    pm.expect(pm.cookies.has(\"ARRAffinity\")).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldGWmhBUDdjdVJacUowdEZyX3c1MyJ9.eyJuaWNrbmFtZSI6ImluZHJhamVldHVhdCIsIm5hbWUiOiJpbmRyYWplZXR1YXRAbWFpbGRyb3AuY2MiLCJwaWN0dXJlIjoiaHR0cHM6Ly9zLmdyYXZhdGFyLmNvbS9hdmF0YXIvZjcxZTNmMDY3YzgzZDU3YWY5M2FlYjY2YTA4MDJjZTU_cz00ODAmcj1wZyZkPWh0dHBzJTNBJTJGJTJGY2RuLmF1dGgwLmNvbSUyRmF2YXRhcnMlMkZpbi5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNS0wMi0yMlQwOToyMzozOS42OTNaIiwiZW1haWwiOiJpbmRyYWplZXR1YXRAbWFpbGRyb3AuY2MiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYmV0YWxvZ2luLmFnaW5nb3B0aW9ucy5jb20vIiwiYXVkIjoidGtZMkh5Mk5JampuY1BCTjRiNEtZbUVRNVA2Q3BNSnUiLCJzdWIiOiJhdXRoMHw2NzU5MjA3MjRiMTY5ZmUyN2I5MDBiYWEiLCJpYXQiOjE3NDAyMTYyMzcsImV4cCI6MTc0MDIzMDYzNywic2lkIjoiVkVKbWItQXFGeldLSEtWR2U3M1VrRlE2RmlVdHhYN2UiLCJhdF9oYXNoIjoiR3MzcXZiSWpJaVFPWVBBNUJZOTVudyIsIm5vbmNlIjoicFhDNk9JOWJ4LnpycmVPQWNoZkNmWGEuQWxCdTd0Q0MifQ.LASumabFz9AAnMOjJX-2SXnEHHirG_uXuEtUL2k4mjk5R5-rIOcGwB9xzvnTAzbz47wGn26PQ9ZB3Beri9tzXVW7dC_sWkv2RFRTD6isvvXjroVl7LGRKotKdtf-tDqzWpX1yiwhKn6lm1e8cxFJZfFv0pqa-he6FOa4PZIfN3lYA1EmG8U9mJgt2cGn4hSVtzYXkU83lWUyKx2IfQrgPmj4ryAOSGksgi27L-cLtfiW85brd5qG6r9FJi0wY5UKUg6osZ6Y865FLnV-31Zv_vf6u1A5aHBiKct11YwTkV_u9W8oqfWuWI0UwncV1DDiQZn-j6Py1qnflb_6A9TPYw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IntakeBaseUrl}}/api/Account/GetUserDetailByEmailId?emailId=testuat054@maildrop.cc",
+					"host": [
+						"{{IntakeBaseUrl}}"
+					],
+					"path": [
+						"api",
+						"Account",
+						"GetUserDetailByEmailId"
+					],
+					"query": [
+						{
+							"key": "emailId",
+							"value": "testuat054@maildrop.cc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAddressByUserId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Verify Cookies\", function(){\r",
+							"    pm.expect(pm.cookies.has(\"ARRAffinity\")).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{IntakeBaseUrl}}/api/Address/get-address-by-userid/:userId",
+					"host": [
+						"{{IntakeBaseUrl}}"
+					],
+					"path": [
+						"api",
+						"Address",
+						"get-address-by-userid",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "0ceabea2-e904-4d6e-8081-d756706a4b5a"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "jwtToken",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
